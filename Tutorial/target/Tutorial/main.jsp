@@ -10,9 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>JSP Page</title>
+        <script src="./resource/js/jquery-2.1.4.js"></script>
+        
     </head>
     <body>
              
         <h1>Hello <%= request.getSession(false).getAttribute("username") %></h1>
+        <br>
+        
+        <form method="POST" action="logout">
+            <input type="submit" value="Logout" style="color: red; background-color: white; border-color: white; font-size: 1.6em;"/>
+        </form>
     </body>
 </html>

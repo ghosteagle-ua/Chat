@@ -39,11 +39,10 @@ public class AcountService {
         return Boolean.FALSE;
     }
     
-    public UserProfile getUserProfile(String username, String password){
+    public UserProfile getUserProfile(String username){
         
         for(UserProfile profile : users){
-            if(profile.getUsername().equals(username) 
-                    && profile.getPassword().equals(password))
+            if(profile.getUsername().equals(username))
                 return profile;
         }
         return null;
