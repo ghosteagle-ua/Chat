@@ -24,6 +24,11 @@ public class LogoutServlet extends HttpServlet{
                 c.setMaxAge(0);
                 resp.addCookie(c);
             }
+            
+            if(c.getName().equals("JSESSIONID")){
+                c.setMaxAge(0);
+                resp.addCookie(c);
+            }
         }
         
         req.getSession().invalidate();

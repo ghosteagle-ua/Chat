@@ -35,22 +35,22 @@ public class AuthenticationFilter implements Filter{
         String url = request.getRequestURI();
         Cookie []cookies = request.getCookies();
         Boolean isAuthCookie = Boolean.FALSE;
+        String auth = "";
+        String sessionID = "";
         
         if(url.contains("main.jsp")){
             for(Cookie c : cookies){
-                if(c.getName().equals("auth")){
-                    isAuthCookie = Boolean.TRUE;
-                    if(c.getValue().equals("TRUE")){
-                        fc.doFilter(sr, sr1);
-                        return;
-                    }
-                }
+               if(c.getName().equals("auth")) auth = c.getValue();
+               else if(c.getName().equals("JSESSIONID")) sessionID = c.getValue();
             }
-            if(!isAuthCookie) response.sendRedirect("./loginPage.html");
-        }else fc.doFilter(sr, sr1);
-         
+            
+            if(auth.equals("TRUE") 
+                    && sessionID.equals(request.getSession().getId())){
+                fc.doFilter(sr, sr1);
+            }else /*response.sendRedirect("./loginPage.html")*/;
+        }
         
-        
+        fc.doFilter(sr, sr1);   
     }
 
     @Override
