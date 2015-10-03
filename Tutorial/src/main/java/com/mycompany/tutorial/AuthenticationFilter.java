@@ -47,7 +47,7 @@ public class AuthenticationFilter implements Filter{
             if(auth.equals("TRUE") 
                     && sessionID.equals(request.getSession().getId())){
                 fc.doFilter(sr, sr1);
-            }else /*response.sendRedirect("./loginPage.html")*/;
+            }else response.sendRedirect("./loginPage.html");
         }
         
         fc.doFilter(sr, sr1);   

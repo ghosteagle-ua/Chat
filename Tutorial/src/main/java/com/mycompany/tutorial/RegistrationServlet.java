@@ -37,14 +37,13 @@ public class RegistrationServlet extends HttpServlet{
                 Cookie cookie = new Cookie("auth", "TRUE");
                 cookie.setMaxAge(60*60*3);
                 resp.addCookie(cookie);
-                resp.getWriter().print("User with this data alredy exist"+" "+ username +" "+password+" "+check );
-                resp.sendRedirect("./main.jsp");
+                req.getRequestDispatcher("./main.jsp").forward(req, resp);;
             }else{
                 resp.getWriter().print("User with this data alredy exist" );
             }
             
             }else{
-                resp.sendRedirect("./registration.html");
+                req.getRequestDispatcher("./registration.html").forward(req, resp);
             }
     }
 

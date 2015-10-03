@@ -13,7 +13,14 @@ public class AcountService {
     private AcountService (){
         users = new LinkedHashSet<>();
         users.add(new UserProfile("admin","admin"));
-        users.add(new UserProfile("test","test")); 
+        users.add(new UserProfile("test","test"));
+        users.add(new UserProfile("user", "user"));
+        this.getUserProfile("admin").addFriend("test");
+        this.getUserProfile("admin").addFriend("user");
+        this.getUserProfile("test").addFriend("admin");
+        this.getUserProfile("test").addFriend("user");
+        this.getUserProfile("user").addFriend("admin");
+        this.getUserProfile("user").addFriend("test");
     }
     
     public static AcountService getInstance(){

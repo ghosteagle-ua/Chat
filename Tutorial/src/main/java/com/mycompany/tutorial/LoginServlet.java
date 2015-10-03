@@ -31,13 +31,13 @@ public class LoginServlet extends HttpServlet{
                 Cookie cookie = new Cookie("auth", "TRUE");
                 cookie.setMaxAge(60*60*3);
                 resp.addCookie(cookie);
-                resp.sendRedirect("./main.jsp");
+                req.getRequestDispatcher("./main.jsp").forward(req, resp);
             }else{
                 resp.getWriter().print("Not correct login or password" );
             }
         
         }else{
-            resp.sendRedirect("./loginPage.html");
+            req.getRequestDispatcher("./loginPage.jsp").forward(req, resp);
         }
         
         
